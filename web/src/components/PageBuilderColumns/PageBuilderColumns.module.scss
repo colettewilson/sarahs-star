@@ -1,0 +1,43 @@
+.pageBuilderColumns {
+  @include section;
+}
+
+.pageBuilderColumnsIntro {
+  @include theme-intro;
+}
+
+.pageBuilderColumnsWrapper {
+  display: grid;
+  width: 100%;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  margin-right: auto;
+  margin-left: auto;
+  grid-gap: 1rem;
+
+  @include breakpoint(large up) {
+    padding-right: 2rem;
+    padding-left: 2rem;
+    grid-gap: 2rem;
+  }
+}
+
+.pageBuilderColumnsWrapper[data-columns="2"] {
+  max-width: calc(1400px / 12 * 10);
+
+  @include breakpoint(medium up) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include breakpoint(xlarge up) {
+    width: calc(100% / 12 * 10);
+  }
+}
+
+.pageBuilderColumnsWrapper[data-columns="3"] {
+  max-width: $maxWidth; 
+
+  @include breakpoint(large up) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

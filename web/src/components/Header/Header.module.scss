@@ -3,9 +3,12 @@
   top: 0;
   left: 0;
   width: 100%;
-  color: white;
-  background: black;
+  background-color: white;
   z-index: 10;
+}
+
+.header[data-scrolled="true"] {
+  border-bottom: 1px solid var(--tone-light);
 }
 
 .headerInner {
@@ -23,60 +26,93 @@
 }
 
 .headerLogo {
-  width: 40px;
+  display: block;
+  width: 180px;
+  height: auto;
+}
+
+.headerButton {
+  color: currentColor;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+
+  @include breakpoint(xlarge up) {
+    display: none;
+  }
+}
+
+.headerButton[aria-expanded=true] {
+
+  .headerButtonIcon {
+    background-color: transparent;
+  }
+
+  .headerButtonIcon::before {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .headerButtonIcon::after {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+}
+
+.headerButtonLabel {
+  @include visuallyHidden;
+}
+
+.headerButtonIcon,
+.headerButtonIcon::before,
+.headerButtonIcon::after {
+  @include transition(transform);
+  display: inline-block;
+  width: 26px;
+  height: 4px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  background-color: currentColor;
+  border-radius: 4px;
+  line-height: 1;
+}
+
+.headerButtonIcon {
+  @include transition(background);
+  position: relative;
+  margin-left: block(small);
+}
+
+.headerButtonIcon::before,
+.headerButtonIcon::after {
+  content: '';
+  position: absolute;
+  left: 0;
+}
+
+.headerButtonIcon::before {
+  margin-top: -8px;
+  transform: translateY(0) rotate(0);
 }
 
 .headerNav {
-  ul {
-    display: flex;
-  }
-
-  a {
-    @include font-roboto(700);
-    position: relative;
-
-    &::after {
-      @include transition(background-color);
-      content: "";
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
-      height: 2px;
-    }
-  }
-
-  a.isActive::after {
-    background-color: var(--primary-color);
-  }
-
-  @include breakpoint(medium down) {
+  @include breakpoint(large down) {
     @include transition((opacity, transform, visibility));
     position: fixed;
-    inset: 69px 0 0;
-    background-color: black;
+    top: 68px;
+    right: 0;
+    width: 320px;
+    height: calc(100% - 68px);
+    background-color: white;
+    box-shadow: 0 12px 12px rgba(black, 0.1);
     opacity: 0;
-    transform: scale(0.75);
     visibility: hidden;
-
-    ul {
-      height: 100%;
-      margin: auto;
-      flex-wrap: wrap;
-      align-content: center;
-    }
 
     li {
       @include transition((opacity, transform));
       width: 100%;
-      padding: block(gutter);
       opacity: 0;
-      text-align: center;
       transform: translateY(10px);
-    }
-
-    a {
-      font-size: 24px;
     }
 
     .headerButton[aria-expanded="true"] + & {
@@ -95,19 +131,153 @@
       }
     }
   }
+}
 
-  @include breakpoint(large up) {
-    ul {
-      margin-right: -(block(gutter));
-      margin-left: -(block(gutter));
+.navList {
+  @include breakpoint(large down) {
+    height: 100%;
+    margin: auto;
+  }
+
+  @include breakpoint(xlarge up) {
+    display: flex;
+  }
+}
+
+.navItem {
+  display: flex;
+  position: relative;
+
+  span {
+    display: flex;
+    align-items: center;
+  }
+
+  span::after {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin-left: 8px;
+    margin-bottom: 4px;
+    border: 1px solid;
+    border-top: none;
+    border-left: none;
+    transform: rotate(45deg);
+  }
+
+  &:focus-visible {
+    outline: dashed 2px var(--primary-color);
+    outline-offset: 4px;
+  }
+
+  @include breakpoint(large down) {
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--tone-light);
+
+    span {
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    &:last-of-type {
+      border-bottom: none;
+    }
+  }
+}
+
+.navLink {
+  @include font-opensans(300, italic);
+  display: flex;
+  text-transform: uppercase;
+  align-items: center;
+  cursor: pointer;
+
+  &:focus-visible {
+    outline: dashed 1px var(--brand-1-color);
+  }
+
+  @include breakpoint(large down) {
+    padding: block(gutter) block(medium);
+  }
+
+  @include breakpoint(medium down) {
+    padding: block(gutter);
+  }
+
+  @include breakpoint(xlarge up) {
+    margin-right: 12px;
+    margin-left: 12px;
+  }
+}
+
+.navDropdown {
+  a {
+    @include font-opensans;
+    display: block;
+    margin: 0;
+    text-transform: none;
+
+    &:focus-visible {
+      outline: dashed 1px var(--brand-1-color);
+    }
+  }
+
+  @include breakpoint(large down) {
+    @include transition(max-height);
+    width: 100%;
+    max-height: 0px;
+    background-color: var(--tone-primary);
+    overflow: hidden;
+
+    .navItem[aria-expanded="true"] & {
+      max-height: 1000px;
+    }
+  }
+
+  @include breakpoint(xlarge up) {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    width: 172px;
+    background-color: white;
+    border: 1px solid var(--tone-light);
+    text-align: center;
+    transform: translateX(-50%);
+    opacity: 0;
+    visibility: hidden;
+
+    .navItem[aria-expanded="true"] &,
+    .navItem:hover &,
+    .nav:focus-within & {
+      opacity: 1;
+      visibility: visible;
     }
 
     li {
-      padding: 0 block(gutter);
+      padding: 8px;
+      border-bottom: 1px solid var(--tone-light);
     }
 
-    a {
-      font-size: 14px;
+    li:last-child {
+      border-bottom: none;
     }
+  }
+}
+
+.navDropdown::before {
+  @include breakpoint(xlarge up) {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    width: 12px;
+    height: 12px;
+    margin-bottom: 1px;
+    background-color: white;
+    border: 1px solid var(--tone-light);
+    border-right: none;
+    border-bottom: none;
+    transform: translate(-50%, 50%) rotate(45deg);
   }
 }

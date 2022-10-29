@@ -1,5 +1,3 @@
-
-   
 import bcp47 from 'bcp47'
 
 export default {
@@ -7,12 +5,6 @@ export default {
   name: 'globalSettings',
   type: 'document',
   fields: [
-    {
-      title: 'Homepage',
-      name: 'homepage',
-      type: 'reference',
-      to: {type: 'page'}
-    },
     {
       title: 'Site title',
       name: 'title',

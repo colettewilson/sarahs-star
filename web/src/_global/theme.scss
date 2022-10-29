@@ -1,12 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,500;0,700;1,300;1,500;1,700&display=swap');
+
 :root {
-  --primary-color: #ff0066;
+  --primary-color: #150f27;
+  --brand-1-color: #35a0ce;
+  --brand-2-color: #da2b70;
+  --brand-3-color: #ec8b2d;
   --tone-light: #efefef;
+  --tone-primary: #f7f7fe;
+  --tone-brand-1: #ecf7fc;
+  --tone-brand-2: #fcecf2;
+  --tone-brand-3: #fdf5ec;
 }
 
 body {
   @include body;
   width: 100vw;
   overflow-x: hidden;
+
+  * {
+    box-sizing: border-box;
+  }
+
+  &[data-nav-open="true"] {
+    max-height: 100vh;
+    overflow: hidden;
+  }
 }
 
 h1 {

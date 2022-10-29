@@ -1,0 +1,13 @@
+.pageIntro {
+  @include section;
+  background: var(--tone-primary);
+
+  h1 {
+    margin-top: 0;
+    margin-bottom: 24px;
+  }
+
+  p {
+    @include lead;
+  }
+}

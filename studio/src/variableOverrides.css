@@ -1,6 +1,6 @@
 :root {
   /* Brand colors */
-  --brand-primary: #ff4c74;
+  --brand-primary: #35a0ce;
   --brand-primary--inverted: #ffffff;
   --brand-secondary: #000000;
   --brand-secondary--inverted: #ffffff;
@@ -13,6 +13,6 @@
   --text-color: #000000;
 
   /* Main Navigation */
-  --main-navigation-color: black;
+  --main-navigation-color: #150f27;
   --main-navigation-color--inverted: white;
 }

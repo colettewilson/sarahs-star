@@ -1,11 +1,10 @@
-
 import S from '@sanity/desk-tool/structure-builder'
-import { TiHome } from 'react-icons/ti'
+import { FiSettings, FiList } from 'react-icons/fi'
 
 // We filter document types defined in structure to prevent
 // them from being listed twice
 const hiddenDocTypes = listItem =>
-  !['globalSettings'].includes(listItem.getId())
+  !['globalSettings', 'globalNavigation', 'homepage'].includes(listItem.getId())
 
 export default () =>
   S.list()
@@ -13,14 +12,14 @@ export default () =>
     .items([
       S.listItem()
         .title('Site Settings')
-        .icon(TiHome)
+        .icon(FiList)
         .child(
           S.list()
           .title('Global Settings')
           .items([
             S.listItem()
               .title('Global Settings')
-              .icon()
+              .icon(FiSettings)
               .child(
                 S.document()
                   .id('globalSettings')
@@ -28,7 +27,28 @@ export default () =>
                   .schemaType('globalSettings')
                   .documentId('globalSettings')
               ),
+            S.listItem()
+              .title('Global Navigation')
+              .icon(FiList)
+              .child(
+                S.document()
+                  .id('globalNavigation')
+                  .title('Navigation')
+                  .schemaType('globalNavigation')
+                  .documentId('globalNavigation')
+              ),
           ])
+        ),
+      S.divider(),
+      S.listItem()
+        .title('Homepage')
+        .icon(FiSettings)
+        .child(
+          S.document()
+            .id('homepage')
+            .title('Homepage')
+            .schemaType('homepage')
+            .documentId('homepage')
         ),
       ...S.documentTypeListItems().filter(hiddenDocTypes)
     ])

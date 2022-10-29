@@ -52,6 +52,16 @@ export default {
             type: 'object',
             fields: [
               {
+                title: 'Layout',
+                name: 'layout',
+                type: 'string',
+                options: {
+                  list: ['Inline', 'Block', 'Button'],
+                  layout: 'radio',
+                  direction: 'horizontal'
+                }
+              },
+              {
                 title: 'Link',
                 name: 'href',
                 type: 'url',

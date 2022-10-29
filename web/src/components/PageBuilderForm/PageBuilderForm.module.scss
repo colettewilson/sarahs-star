@@ -1,0 +1,111 @@
+.pageBuilderForm {
+  @include section;
+}
+
+.formIntro {
+  @include theme-intro;
+}
+
+.form {}
+
+.formField {
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.formLabel {
+  @include font-opensans(500);
+  display: inline-block;
+  margin-bottom : 8px;
+}
+
+.formError {
+  @include font-opensans(500);
+  padding: 0 8px;
+  color: var(--brand-2-color);
+  font-size: 0.875rem;
+}
+
+.formInput,
+.formTextarea {
+  @include transition(border);
+  display: block;
+  width: 100%;
+  padding: 8px;
+  border: 2px solid var(--tone-light);
+
+  &:focus {
+    border-color: var(--primary-color);
+  }
+}
+
+.formTextarea {
+  min-height: 200px;
+}
+
+.formSubmit {
+  @include button;
+
+  .form[submitted="true"] & {
+    border-color: var(--tone-light);
+    pointer-events: none;
+  }
+}
+
+.formMessage {
+  display: flex;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 600px;
+  height: 400px;
+  background-color: white;
+  border-radius: 18px;
+  box-shadow: 0 0 12px rgba(black, 0.1);
+  text-align: center;
+  transform: translate(-50%, -50%);
+  visibility: hidden;
+
+  .form[submitted="true"] & {
+    visibility: visible;
+  }
+}
+
+.formMessageInner {
+  width: 100%;
+  padding: block(medium);
+  margin: auto;
+
+  img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 24px;
+  }
+
+  h4 {
+    @include lead;
+    margin-bottom: 24px;
+  }
+}
+
+.formSuccessIcon {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  margin-right: auto;
+  margin-bottom: block(gutter);
+  margin-left: auto;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 30px;
+    height: 15px;
+    border: 5px solid var(--success-color);
+    border-top: none;
+    border-right: none;
+    transform: translate(-30%, -40%) rotate(-45deg) scale(0);
+  }
+}

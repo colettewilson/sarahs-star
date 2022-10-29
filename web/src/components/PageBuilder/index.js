@@ -1,11 +1,17 @@
 import React from "react";
 import PropTypes from 'prop-types'
 // Import components
+import Columns from "../PageBuilderColumns"
 import Text from "../PageBuilderText"
+import ImageText from "../PageBuilderImageText"
+import Form from '../PageBuilderForm'
 
 const PageBuilder = ({ blocks }) => {
   const components = {
+    "pageBuilderColumns": Columns,
     "pageBuilderText": Text,
+    "pageBuilderImageText": ImageText,
+    "pageBuilderForm": Form
   }
 
   if (!blocks) return null

@@ -1,7 +1,7 @@
 .portableText {
   > div > * {
-    margin-top: bloack(medium);
-    margin-bottom: bloack(medium);
+    margin-top: block(gutter);
+    margin-bottom: block(gutter);
   }
 
   > div > *:first-child {
@@ -42,6 +42,10 @@
     line-height: 1;
     color: var(--primary-color);
   }
+}
+
+.blockLink {
+  @include theme-link;
 }
 
 .textLead {

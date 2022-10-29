@@ -24,6 +24,12 @@ export default {
         }),
     },
     {
+      title: 'Page Intro',
+      name: 'pageIntro',
+      type: 'text',
+      rows: 3
+    },
+    {
       title: 'Page Builder',
       name: 'pageBuilder',
       type: 'pageBuilder'

@@ -22,7 +22,8 @@ $gridGutter: 16px;
 /* Breakpoints */
 
 $breakpoints: (
-  small: 0,
+  xsmall: 0,
+  small: 420px,
   medium: 740px,
   large: 1024px,
   xlarge: 1200px,
@@ -85,8 +86,8 @@ $breakpoints: (
 
 $fallbacks: Helvetica Neue, Helvetica, Arial, sans-serif;
 
-@mixin font-roboto($weight: 300, $style: normal) {
-  @include font-family("Roboto", $fallbacks);
+@mixin font-opensans($weight: 300, $style: normal) {
+  @include font-family("Open Sans", $fallbacks);
   font-style: $style;
   font-weight: $weight;
   font-display: swap;
@@ -105,8 +106,7 @@ $fallbacks: Helvetica Neue, Helvetica, Arial, sans-serif;
 /* Typography */
 
 @mixin title {
-  @include font-roboto(700);
-  letter-spacing: 0.03em;
+  @include font-opensans(700);
   line-height: 1.1;
 
   span {
@@ -116,28 +116,33 @@ $fallbacks: Helvetica Neue, Helvetica, Arial, sans-serif;
 
 @mixin h1 {
   @include title;
-  font-size: 54px;
+  font-size: 42px;
 
   @include breakpoint(medium up) {
+    font-size: 54px;
+  }
+
+  @include breakpoint(xlarge up) {
     font-size: 72px;
   }
 }
 
 @mixin h2 {
   @include title;
-  font-size: 48px;
+  font-size: 28px;
 
   @include breakpoint(medium up) {
-    font-size: 60px;
+    font-size: 32px;
   }
 }
 
 @mixin h3 {
   @include title;
-  font-size: 32px;
+  @include font-opensans(500);
+  font-size: 20px;
 
   @include breakpoint(medium up) {
-    font-size: 40px;
+    font-size: 24px;
   }
 }
 
@@ -151,7 +156,7 @@ $fallbacks: Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 
 @mixin lead {
-  @include font-roboto;
+  @include font-opensans(300, italic);
   font-size: 18px;
   letter-spacing: 0.03em;
   line-height: 1.3;
@@ -162,7 +167,7 @@ $fallbacks: Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 
 @mixin small {
-  @include font-roboto;
+  @include font-opensans;
   font-size: 12px;
   letter-spacing: 0.03em;
   line-height: 1.3;
@@ -173,13 +178,28 @@ $fallbacks: Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 
 @mixin body {
-  @include font-roboto;
+  @include font-opensans;
   font-size: 16px;
-  letter-spacing: 0.03em;
   line-height: 1.5;
 
   @include breakpoint(medium up) {
     font-size: 18px;
+  }
+}
+
+@mixin theme-intro {
+  text-align: center;
+
+  h2 {
+    @include h2;
+    margin-bottom: block(medium);
+    text-transform: uppercase;
+  }
+
+  p {
+    @include font-opensans(500);
+    font-size: 1.325rem;
+    margin-bottom: block(medium);
   }
 }
 
@@ -247,12 +267,81 @@ $blocks: (
 /* Theme */
 
 @mixin section {
-  width: 100%;
-  padding: 3rem 0;
-  margin: 0 auto;
+  padding-top: block(large);
+  padding-bottom: block(large);
 
   @include breakpoint(medium up) {
-    display: flex;
-    padding: 6rem 0;
+    padding-top: block(2xlarge);
+    padding-bottom: block(2xlarge);
+  }
+}
+
+@mixin button {
+  @include transition((color, background, border));
+  @include font-opensans(700);
+  display: inline-block;
+  min-width: 128px;
+  padding: 12px 18px;
+  font-size: 16px;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 32px;
+  cursor: pointer;
+
+  &[data-style="primary"] {
+    background-color: var(--brand-1-color);
+    border: 2px solid var(--brand-1-color);
+  }
+  
+  &[data-style="secondary"] {
+    background-color: var(--brand-2-color);
+    border: 2px solid var(--brand-2-color);
+  }
+
+  &[data-style="ghost"] {
+    border: 2px solid var(--primary-color);
+  }
+  
+  &:hover {
+    background-color: white;
+    border: 2px solid;
+  }
+
+  &[data-style="ghost"]:hover {
+    color: white;
+    background-color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+  }
+
+  &:focus-visible {
+    outline: dashed 2px var(--primary-color);
+    outline-offset: 4px;
+  }
+}
+
+@mixin theme-link {
+  @include transition(color);
+  display: flex;
+  font-size: 1.25rem;
+  font-weight: 500;
+  text-decoration: none;
+  align-items: center;
+
+  svg {
+    @include transition(transform);
+    width: 18px;
+    margin-left: 8px;
+    margin-bottom: -2px;
+    color: var(--brand-1-color);
+  }
+
+  &:hover,
+  &:focus-visible {
+    color: var(--brand-1-color);
+  }
+
+  &:hover svg,
+  &:focus-visible svg {
+    transform: translateX(4px);
   }
 }

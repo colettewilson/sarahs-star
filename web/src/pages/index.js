@@ -4,12 +4,14 @@ import { groq } from 'next-sanity'
 import { getClient } from '../lib/sanity'
 
 import Seo from '../components/Seo'
-import Header from '../components/Header'
+import Layout from '../components/Layout'
+import Hero from '../components/Hero'
 import PageBuilder from '../components/PageBuilder'
 
 const pageQuery = groq`{
   'globalSettings': *[_type == 'globalSettings'][0],
-  'page': *[_id == *[_type == 'globalSettings'][0].homepage._ref][0]
+  'globalNavigation': *[_type == 'globalNavigation'][0],
+  'page': *[_type == 'homepage'][0]
 }`
 
 export async function getStaticProps() {
@@ -20,7 +22,7 @@ export async function getStaticProps() {
   }
 }
 
-const Home = ({ globalSettings, page }) => {
+const Home = ({ globalSettings, globalNavigation, page }) => {
   const { pageTitle, pageBuilder, seo } = page
 
   return (
@@ -30,8 +32,10 @@ const Home = ({ globalSettings, page }) => {
         pageSeo={seo}
         pageTitle={pageTitle}
       />
-      <Header />
-      <PageBuilder blocks={pageBuilder} />
+      <Layout navigation={globalNavigation}>
+        <Hero {...page.hero} />
+        <PageBuilder blocks={pageBuilder} />
+      </Layout>
     </>
   )
 }

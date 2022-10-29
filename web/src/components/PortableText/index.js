@@ -1,6 +1,7 @@
 import BaseBlockContent from "@sanity/block-content-to-react"
 import React from "react"
 import Link from "next/link"
+import Arrow from '../../svg/arrow.svg'
 
 import { LinkTest } from "../../helpers/link"
 
@@ -32,13 +33,14 @@ const serializers = {
       
       return internal ? (
         <Link href={mark.href}>
-          <a className={mark.blockLink ? styles.blockLink : ''}>
-            {children}
+          <a className={mark.layout === 'Block' ? styles.blockLink : ''}>
+            <span>{children}</span>
+            {mark.layout === 'Block' && <Arrow />}
           </a>
         </Link>
       ) : (
-        <a className={mark.blockLink ? styles.blockLink : ''} href={mark.href} {...target} {...rel}>
-          {children}
+        <a className={mark.layout === 'Block' ? styles.blockLink : ''} href={mark.href} {...target} {...rel}>
+          <span>{children}</span>
         </a>
       )
     }

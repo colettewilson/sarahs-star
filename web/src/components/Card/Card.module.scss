@@ -1,0 +1,17 @@
+.card {
+  text-align: center;
+}
+
+.cardImage {
+  @include bgImg;
+  padding-bottom: calc(9 / 16 * 100%);
+  background-color: var(--tone-primary);
+}
+
+.cardContent {
+  padding-top: 24px;
+}
+
+.cardTitle {
+  margin-bottom: 24px;
+}

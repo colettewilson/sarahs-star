@@ -22,7 +22,7 @@ export default {
       type: 'text',
       rows: '3',
       description:
-        'Please provide a unique meta description. If none is supplied a default of the site description will form the meta description for this page.',
+        'Please provide a unique meta description. This is important for SEO and should be a 1 or 2 sentence description of the content on this page. Keep it specific, relevant and brief.',
       validation: Rule =>
         Rule.max(155).warning(
           'Description too long. Optimal length is 155 characters or less.'
