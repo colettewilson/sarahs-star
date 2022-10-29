@@ -1,6 +1,6 @@
 [build]
   base = "web"
-  command = "NODE_ENV=production && yarn build"
+  command = "NODE_ENV=production && yarn build && yarn export"
   publish = "out"
 
 [functions]
