@@ -19,6 +19,10 @@ const pageQuery = groq`{
 export async function getStaticProps({ params }) {
   const { globalSettings, globalNavigation, page } = await getClient.fetch(pageQuery, { slug: params.slug })
 
+  console.log(params.slug)
+
+  if (!page) return { notFound: true }
+
   return {
     props: {
       data: {
@@ -35,7 +39,7 @@ export async function getStaticPaths() {
 
   return {
     paths: paths.map((slug) => ({ params: { slug } })),
-    fallback: true,
+    fallback: false,
   }
 }
 

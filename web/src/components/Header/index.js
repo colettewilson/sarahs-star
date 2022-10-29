@@ -63,7 +63,7 @@ const Header = ({ navigation }) => {
                 : <li className={styles.navItem} key={link._key}><Link {...link} onClick={resetNav} /></li>
             })}
             <li className={styles.navButton} style={{ marginLeft: `16px` }}>
-              <Button label="Donate" url="" />
+              <Button label="Donate" url="/" />
             </li>
             <li className={styles.navButton} style={{ marginLeft: `16px` }}>
               <Button label="Apply" url="/volunteer" style="secondary" />
