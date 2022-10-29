@@ -1,7 +1,7 @@
 [build]
   base = "web"
   command = "NODE_ENV=production && yarn build"
-  publish = "out"
+  publish = ".next"
 
 [functions]
   node_bundler = "esbuild"
