@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import PropTypes from 'prop-types'
-import Dropdown from './dropdown'
+import Dropdown from './Dropdown'
 import Link from './Link'
 import Button from '../Button'
 import MenuButton from "./MenuButton"
