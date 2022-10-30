@@ -35,6 +35,7 @@ const Header = ({ navigation }) => {
 
   const resetNav = () => {
     setMobileMenuOpen(false)
+    document.body.setAttribute('data-nav-open', false)
   }
 
   useEffect(() => {
@@ -50,7 +51,7 @@ const Header = ({ navigation }) => {
     <header className={styles.header} data-scrolled={isScrolled}>
       <div className={styles.headerInner}>
         <a href="/">
-          <img className={styles.headerLogo} src="./images/header-logo.png" width="1062" height="635" alt="Sarah's Star logo" />
+          <img className={styles.headerLogo} src="/images/header-logo.png" width="1062" height="635" alt="Sarah's Star logo" />
         </a>
 
         <MenuButton handleMobileMenu={toggleMobileMenu} mobileMenuOpen={mobileMenuOpen} />
