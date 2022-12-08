@@ -30,6 +30,7 @@ export default {
         { title: 'Lead', value: 'lead', blockEditor: { render: LeadStyle } },
         { title: 'H2', value: 'h2' },
         { title: 'H3', value: 'h3' },
+        { title: 'Quote', value: 'blockquote' },
         { title: 'Small', value: 'small', blockEditor: { render: SmallStyle } },
       ],
       lists: [
@@ -80,5 +81,6 @@ export default {
     // You can add additional types here. Note that you can't use
     // primitive types such as 'string' and 'number' in the same array
     // as a block type.
+    { type: 'gallery' }
   ],
 }

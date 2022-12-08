@@ -196,7 +196,7 @@ $fallbacks: Helvetica Neue, Helvetica, Arial, sans-serif;
     text-transform: uppercase;
   }
 
-  p {
+  [class*="portableText"] {
     @include font-opensans(500);
     font-size: 1.325rem;
     margin-bottom: block(medium);
@@ -276,6 +276,16 @@ $blocks: (
   }
 }
 
+@mixin blockSection {
+  padding-top: block(medium);
+  padding-bottom: block(medium);
+
+  @include breakpoint(medium up) {
+    padding-top: block(large);
+    padding-bottom: block(large);
+  }
+}
+
 @mixin button {
   @include transition((color, background, border));
   @include font-opensans(700);
@@ -343,5 +353,60 @@ $blocks: (
   &:hover svg,
   &:focus-visible svg {
     transform: translateX(4px);
+  }
+}
+
+@mixin card-link {
+  @for $i from 1 through 3 {
+    &[data-style="brand-#{$i}"] {
+      > span {
+        background-color: var(--brand-#{$i}-color);
+      }
+    }
+  }
+
+  > span {
+    @include transition(transform);
+    position: absolute;
+  }
+
+  > span:first-child,
+  > span:nth-child(3) {
+    top: 0;
+    width: 4px;
+    height: 100%;
+    transform: scaleY(0);
+    transform-origin: 0 100%;
+  }
+
+  > span:first-child {
+    left: 0;
+    transform-origin: 0 0;
+  }
+  
+  > span:nth-child(3) {
+    right: 0;
+  }
+
+  > span:nth-child(2),
+  > span:nth-child(4) {
+    left: 0;
+    width: 100%;
+    height: 4px;
+    transform: scaleX(0);
+  }
+
+  > span:nth-child(2) {
+    top: 0;
+    transform-origin: 100% 0;
+  }
+
+  > span:nth-child(4) {
+    bottom: 0;
+    transform-origin: 0 0;
+  }
+
+  &:hover > span {
+    transform: scale(1);
   }
 }

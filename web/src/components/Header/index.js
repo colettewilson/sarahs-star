@@ -63,10 +63,10 @@ const Header = ({ navigation }) => {
                 ? <Dropdown key={link._key} {...link} setMobileMenuOpen={setMobileMenuOpen} handleClick={handleDropdownClick} handleLinkClick={resetNav} /> 
                 : <li className={styles.navItem} key={link._key}><Link {...link} onClick={resetNav} /></li>
             })}
-            <li className={styles.navButton} style={{ marginLeft: `16px` }}>
+            <li className={styles.navButton}>
               <Button label="Donate" url="/" />
             </li>
-            <li className={styles.navButton} style={{ marginLeft: `16px` }}>
+            <li className={styles.navButton}>
               <Button label="Apply" url="/volunteer" style="secondary" />
             </li>
           </ul>

@@ -8,12 +8,14 @@ import globalSettings from './documents/globalSettings'
 import globalNavigation from './documents/globalNavigation'
 import homepage from './documents/homepage'
 import page from './documents/page'
+import clientStory from './documents/client-story'
 
 import hero from './objects/hero'
 import pageBuilder from './objects/pageBuilder'
 import pageBuilderColumns from './objects/pageBuilderColumns'
 import pageBuilderText from './objects/pageBuilderText'
 import pageBuilderImageText from './objects/pageBuilderImageText'
+import pageBuilderClientStories from './objects/pageBuilderClientStories'
 import pageBuilderForm from './objects/pageBuilderForm'
 import portableText from './objects/portableText'
 import basicText from './objects/basicText'
@@ -22,6 +24,7 @@ import directLink from './objects/directLink'
 import dropdown from './objects/dropdown'
 import card from './objects/card'
 import iconCard from './objects/iconCard'
+import gallery from './objects/gallery'
 import link from './objects/link'
 import seo from './objects/seo'
 
@@ -38,12 +41,14 @@ export default createSchema({
     globalNavigation,
     homepage,
     page,
+    clientStory,
 
     hero,
     pageBuilder,
     pageBuilderColumns,
     pageBuilderText,
     pageBuilderImageText,
+    pageBuilderClientStories,
     pageBuilderForm,
     portableText,
     basicText,
@@ -52,6 +57,7 @@ export default createSchema({
     dropdown,
     card,
     iconCard,
+    gallery,
     link,
     seo
   ]),

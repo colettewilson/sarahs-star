@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import Columns from "../PageBuilderColumns"
 import Text from "../PageBuilderText"
 import ImageText from "../PageBuilderImageText"
+import ClientStories from '../PageBuilderClientStories'
 import Form from '../PageBuilderForm'
 
 const PageBuilder = ({ blocks }) => {
@@ -11,6 +12,7 @@ const PageBuilder = ({ blocks }) => {
     "pageBuilderColumns": Columns,
     "pageBuilderText": Text,
     "pageBuilderImageText": ImageText,
+    "pageBuilderClientStories": ClientStories,
     "pageBuilderForm": Form
   }
 

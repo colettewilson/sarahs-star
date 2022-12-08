@@ -120,7 +120,7 @@
       transform: scale(1);
       visibility: visible;
 
-      @for $i from 1 through 6 {
+      @for $i from 1 through 7 {
         $delay: $i * 50ms + 200ms;
 
         li:nth-child(#{$i}) {
@@ -183,6 +183,14 @@
     &:last-of-type {
       border-bottom: none;
     }
+  }
+}
+
+.navButton {
+  margin-left: 16px;
+
+  @include breakpoint(large down) {
+    margin-top: 16px;
   }
 }
 

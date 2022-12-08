@@ -19,6 +19,11 @@
       type: 'pageBuilderColumns'
     },
     {
+      title: 'Client Stories',
+      name: 'pageBuilderClientStories',
+      type: 'pageBuilderClientStories'
+    },
+    {
       title: 'Form Section',
       name: 'pageBuilderForm',
       type: 'pageBuilderForm'

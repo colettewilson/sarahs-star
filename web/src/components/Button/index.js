@@ -10,8 +10,8 @@ const Button = ({ url, label, style = 'primary' }) => {
   const rel = internal ? 'noopener' : 'noreferrer noopener nofollow'
 
   if (internal) return (
-    <NextLink href={url}>
-      <a className={styles.button} data-style={style}>{label}</a>
+    <NextLink className={styles.button} href={url} data-style={style}>
+      {label}
     </NextLink>
   )
 

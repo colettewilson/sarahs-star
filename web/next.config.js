@@ -21,7 +21,6 @@ const nextConfig = {
     // Important: return the modified config
     return config
   },
-  target: 'serverless',
 }
 
 module.exports = nextConfig

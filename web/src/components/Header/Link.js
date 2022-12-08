@@ -12,8 +12,8 @@ const Link = ({ link, label, active, ...rest }) => {
   const rel = internal ? 'noopener' : 'noreferrer noopener nofollow'
 
   if (internal) return (
-    <NextLink href={link}>
-      <a className={styles.navLink} {...rest}>{label}</a>
+    <NextLink className={styles.navLink} href={link} {...rest}>
+      {label}
     </NextLink>
   )
 

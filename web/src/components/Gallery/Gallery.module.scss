@@ -1,0 +1,20 @@
+.gallery {
+  @include blockSection;
+  display: flex;
+  max-width: 800px;
+  margin: auto;
+  flex-wrap: wrap;
+  gap: block(gutter);
+
+  @include breakpoint(medium up) {
+
+    img {
+      width: calc(50% - 8px);
+      object-fit: cover;
+    }
+
+    img:nth-last-child(2n+1):first-child {
+      width: 100%;
+    }
+  }
+}

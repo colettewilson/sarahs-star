@@ -13,13 +13,24 @@ const slugQuery = groq`*[_type == "page" && defined(slug.current)][].slug.curren
 const pageQuery = groq`{
   'globalSettings': *[_type == 'globalSettings'][0],
   'globalNavigation': *[_type == 'globalNavigation'][0],
-  'page': *[_type == 'page' && slug.current == $slug][0]
+  'page': *[_type == 'page' && slug.current == $slug][0]{
+    ...,
+    pageBuilder[]{
+      ...,
+      _type == 'pageBuilderClientStories' => {
+        ...,
+        featured->{...},
+        'stories': select(
+          addStories && clientStories == 'All' => *[_type == 'clientStory' && _id != ^.featured._ref]|order(publishDate desc),
+          addStories && clientStories == 'Selected' => selectedStories
+        )
+      },
+    }
+  }
 }`
 
 export async function getStaticProps({ params }) {
   const { globalSettings, globalNavigation, page } = await getClient.fetch(pageQuery, { slug: params.slug })
-
-  console.log(params.slug)
 
   if (!page) return { notFound: true }
 

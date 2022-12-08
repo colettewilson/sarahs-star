@@ -1,0 +1,34 @@
+.stories {
+  @include section;
+}
+
+.storiesTitle {
+  margin-bottom: block(medium);
+  text-transform: uppercase;
+}
+
+.story {
+  @include card-link;
+  display: block;
+  position: relative;
+  background-color: white;
+}
+
+.storyThumbnail {
+  @include bgImg;
+  padding-bottom: calc(2 / 3 * 100%);
+}
+
+.storyContent {
+  padding: block(gutter);
+}
+
+.storyExcerpt {
+  display: -webkit-box;
+  margin-top: block(small);
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}

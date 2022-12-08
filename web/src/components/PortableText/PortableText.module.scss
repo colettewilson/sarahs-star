@@ -1,14 +1,14 @@
 .portableText {
-  > div > * {
+  > * {
     margin-top: block(gutter);
     margin-bottom: block(gutter);
   }
 
-  > div > *:first-child {
+  > *:first-child {
     margin-top: 0;
   }
 
-  > div > *:last-child {
+  > *:last-child {
     margin-bottom: 0;
   }
 
@@ -41,6 +41,15 @@
     font-size: 48px;
     line-height: 1;
     color: var(--primary-color);
+  }
+
+  blockquote {
+    @include lead;
+    padding: block(gutter);
+    margin-top: block(medium);
+    margin-bottom: block(medium);
+    background-color: var(--tone-brand-2);
+    border-left: 4px solid var(--brand-2-color);
   }
 }
 

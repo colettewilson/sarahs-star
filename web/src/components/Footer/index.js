@@ -22,11 +22,11 @@ const Footer = ({ navigation }) => {
               <li key={link._key} className={styles.footerItem}>
                 {link._type === 'dropdown' ? 
                   <span className={styles.footerTopLink}>{link.label}</span>
-                  : <Link href={link.link}><a className={styles.footerTopLink}>{link.label}</a></Link>
+                  : <Link className={styles.footerTopLink} href={link.link}>{link.label}</Link>
                 }
                 {link._type === 'dropdown' && (
                   <ul>
-                    {link.dropdownLinks && link.dropdownLinks.map(link => <li key={link._key}><Link href={link.link}><a className={styles.footerLink}>{link.label}</a></Link></li>)}
+                    {link.dropdownLinks && link.dropdownLinks.map(link => <li key={link._key}><Link className={styles.footerLink} href={link.link}>{link.label}</Link></li>)}
                   </ul>
                 )}
               </li>

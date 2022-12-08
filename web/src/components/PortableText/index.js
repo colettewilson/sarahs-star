@@ -1,5 +1,6 @@
-import BaseBlockContent from "@sanity/block-content-to-react"
 import React from "react"
+import { PortableText } from '@portabletext/react'
+import Gallery from '../Gallery'
 import Link from "next/link"
 import Arrow from '../../svg/arrow.svg'
 
@@ -18,28 +19,27 @@ import styles from './PortableText.module.scss'
 const serializers = {
   types: {
     undefined: () => null,
+    gallery: ({ value }) => <Gallery {...value} />,
     block(props) {
       switch (props.node.style) {
         default:
           return BaseBlockContent.defaultSerializers.types.block(props)
       }
-    }
+    },
   },
   marks: {
-    link: ({children, mark}) => {
-      const internal = LinkTest(mark.href)
+    link: ({children, value}) => {
+      const internal = LinkTest(value.href)
       const target = !internal ? {target: "_blank"} : null
       const rel = !internal ? {rel: "nofollow noopener noreferrer"} : null
       
       return internal ? (
-        <Link href={mark.href}>
-          <a className={mark.layout === 'Block' ? styles.blockLink : ''}>
-            <span>{children}</span>
-            {mark.layout === 'Block' && <Arrow />}
-          </a>
+        <Link className={value.layout === 'Block' ? styles.blockLink : ''} href={value.href}>
+          <span>{children}</span>
+          {value.layout === 'Block' && <Arrow />}
         </Link>
       ) : (
-        <a className={mark.layout === 'Block' ? styles.blockLink : ''} href={mark.href} {...target} {...rel}>
+        <a className={value.layout === 'Block' ? styles.blockLink : ''} href={value.href} {...target} {...rel}>
           <span>{children}</span>
         </a>
       )
@@ -69,9 +69,9 @@ const serializers = {
     }
 
     return defaultSerializers.types.block(props)
-  }
+  },
 }
 
-const PortableText = ({ blocks }) => <div className={styles.portableText}><BaseBlockContent blocks={blocks} serializers={serializers} /></div>
+const RichText = ({ blocks }) => <div className={styles.portableText}><PortableText value={blocks} components={serializers} /></div>
 
-export default PortableText
+export default RichText

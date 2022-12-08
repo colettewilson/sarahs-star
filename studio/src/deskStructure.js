@@ -1,10 +1,10 @@
 import S from '@sanity/desk-tool/structure-builder'
-import { FiSettings, FiList } from 'react-icons/fi'
+import { FiFile, FiList, FiSettings, FiUsers } from 'react-icons/fi'
 
 // We filter document types defined in structure to prevent
 // them from being listed twice
 const hiddenDocTypes = listItem =>
-  !['globalSettings', 'globalNavigation', 'homepage'].includes(listItem.getId())
+  !['globalSettings', 'globalNavigation', 'homepage', 'page', 'clientStory'].includes(listItem.getId())
 
 export default () =>
   S.list()
@@ -50,5 +50,14 @@ export default () =>
             .schemaType('homepage')
             .documentId('homepage')
         ),
+      S.listItem()
+        .title('Pages')
+        .icon(FiFile)
+        .child(S.documentTypeList('page')),
+      S.divider(),
+      S.listItem()
+        .title('Client Stories')
+        .icon(FiUsers)
+        .child(S.documentTypeList('clientStory')),
       ...S.documentTypeListItems().filter(hiddenDocTypes)
     ])

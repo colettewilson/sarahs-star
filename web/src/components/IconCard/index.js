@@ -4,23 +4,21 @@ import { LinkTest } from '../../helpers/link'
 
 import styles from './IconCard.module.scss'
 
-const CardInner = ({ link, children }) => {
+const CardInner = ({ link, children, background }) => {
   if (link?.link) {
     const internal = LinkTest(link.link)
 
     if (internal) return (
-      <NextLink href={link.link}>
-        <a className={styles.cardInner}>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          {children}
-        </a>
+      <NextLink className={styles.cardInner} href={link.link} data-style={background}>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        {children}
       </NextLink>
     )
   
-    return <a className={styles.cardInner} href={link.link} target="_black" rel="nofollow noopender noreferrer">{children}</a>
+    return <a className={styles.cardInner} href={link.link} target="_black" rel="nofollow noopender noreferrer" data-style={background}>{children}</a>
   }
 
   return <div className={styles.cardInner}>{children}</div>
@@ -30,8 +28,8 @@ const IconCard = ({ background, cardIcon, cardTitle, cardText, link }) => {
   const src = `./images/icons/${cardIcon}.png`
   
   return (
-    <article className={styles.card} data-style={background}>
-      <CardInner link={link}>
+    <article className={styles.card}>
+      <CardInner link={link} background={background}>
         <div className={styles.cardIcon} data-icon={cardIcon}>
           <img src={src} width="60" height="60" role="presentation" />
         </div>

@@ -1,10 +1,6 @@
 @for $i from 1 through 3 {
-  .card[data-style="brand-#{$i}"] {
+  .cardInner[data-style="brand-#{$i}"] {
     background-color: var(--tone-brand-#{$i});
-  
-    .cardInner > span {
-      background-color: var(--brand-#{$i}-color);
-    }
   }
 }
 
@@ -13,6 +9,7 @@
 }
 
 .cardInner {
+  @include card-link;
   display: block;
   position: relative;
   width: 100%;
@@ -24,51 +21,6 @@
 a.cardInner:focus-visible {
   outline: dashed 2px var(--primary-color);
   outline-offset: 4px;
-}
-
-.cardInner > span {
-  @include transition(transform);
-  position: absolute;
-}
-
-.cardInner > span:first-child,
-.cardInner > span:nth-child(3) {
-  top: 0;
-  width: 4px;
-  height: 100%;
-  transform: scaleY(0);
-  transform-origin: 0 100%;
-}
-
-.cardInner > span:first-child {
-  left: 0;
-  transform-origin: 0 0;
-}
-
-.cardInner > span:nth-child(3) {
-  right: 0;
-}
-
-.cardInner > span:nth-child(2),
-.cardInner > span:nth-child(4) {
-  left: 0;
-  width: 100%;
-  height: 4px;
-  transform: scaleX(0);
-}
-
-.cardInner > span:nth-child(2) {
-  top: 0;
-  transform-origin: 100% 0;
-}
-
-.cardInner > span:nth-child(4) {
-  bottom: 0;
-  transform-origin: 0 0;
-}
-
-.cardInner:hover > span {
-  transform: scale(1);
 }
 
 .cardIcon img {
