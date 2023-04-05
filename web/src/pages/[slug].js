@@ -64,7 +64,7 @@ const Page = ({ data = {} }) => {
         pageSeo={page.seo}
         pageTitle={page.pageTitle}
       />
-      <Layout navigation={globalNavigation}>
+      <Layout navigation={globalNavigation} charityNumber={globalSettings.charityNumber}>
         <PageIntro title={page.pageTitle} intro={page.pageIntro} />
         <PageBuilder blocks={page.pageBuilder} />
       </Layout>

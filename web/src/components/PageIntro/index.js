@@ -2,13 +2,14 @@ import PropTypes from 'prop-types'
 
 import styles from './PageIntro.module.scss'
 
-const PageIntro = ({ title, intro, story = false }) => {
+const PageIntro = ({ title, intro, startDate, story = false }) => {
   return (
     <section className={styles.pageIntro} data-story={story}>
       <div className="grid">
-        <div className="gridItem large-8 xlarge-offset-1">
+        <div className="gridItem">
           <h1>{title}</h1>
-          <p>{intro}</p>
+          {intro && <p>{intro}</p>}
+          {startDate && <p>Start Date: <b>{startDate}</b></p>}
         </div>
       </div>
     </section>

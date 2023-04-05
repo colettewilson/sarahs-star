@@ -9,6 +9,8 @@ import globalNavigation from './documents/globalNavigation'
 import homepage from './documents/homepage'
 import page from './documents/page'
 import clientStory from './documents/client-story'
+import event from './documents/event'
+import notFound from './documents/notFound'
 
 import hero from './objects/hero'
 import pageBuilder from './objects/pageBuilder'
@@ -42,6 +44,8 @@ export default createSchema({
     homepage,
     page,
     clientStory,
+    event,
+    notFound,
 
     hero,
     pageBuilder,

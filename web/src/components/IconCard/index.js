@@ -21,7 +21,7 @@ const CardInner = ({ link, children, background }) => {
     return <a className={styles.cardInner} href={link.link} target="_black" rel="nofollow noopender noreferrer" data-style={background}>{children}</a>
   }
 
-  return <div className={styles.cardInner}>{children}</div>
+  return <div className={styles.cardInner}  data-style={background}>{children}</div>
 }
 
 const IconCard = ({ background, cardIcon, cardTitle, cardText, link }) => {

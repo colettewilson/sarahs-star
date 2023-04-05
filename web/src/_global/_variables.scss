@@ -148,10 +148,10 @@ $fallbacks: Helvetica Neue, Helvetica, Arial, sans-serif;
 
 @mixin h4 {
   @include title;
-  font-size: 24px;
+  font-size: 18px;
 
   @include breakpoint(medium up) {
-    font-size: 32px;
+    font-size: 20px;
   }
 }
 
@@ -302,7 +302,7 @@ $blocks: (
     background-color: var(--brand-1-color);
     border: 2px solid var(--brand-1-color);
   }
-  
+
   &[data-style="secondary"] {
     background-color: var(--brand-2-color);
     border: 2px solid var(--brand-2-color);
@@ -311,7 +311,7 @@ $blocks: (
   &[data-style="ghost"] {
     border: 2px solid var(--primary-color);
   }
-  
+
   &:hover {
     background-color: white;
     border: 2px solid;
@@ -326,6 +326,28 @@ $blocks: (
   &:focus-visible {
     outline: dashed 2px var(--primary-color);
     outline-offset: 4px;
+  }
+}
+
+@mixin inline-link {
+  @include transition(color);
+  display: inline-block;
+  position: relative;
+  font-weight: bold;
+
+  &::after {
+    @include transition(background-color);
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: currentColor;
+  }
+
+  &:hover {
+    color: var(--brand-1-color);
   }
 }
 
@@ -383,7 +405,7 @@ $blocks: (
     left: 0;
     transform-origin: 0 0;
   }
-  
+
   > span:nth-child(3) {
     right: 0;
   }

@@ -1,15 +1,16 @@
-import { FiUser } from 'react-icons/fi'
+import { IoCalendarOutline } from 'react-icons/io'
 
 export default {
-  title: 'Client Story',
-  name: 'clientStory',
+  title: 'Event',
+  name: 'event',
   type: 'document',
-  icon: FiUser,
+  icon: IoCalendarOutline,
   fields: [
     {
       title: 'Title',
       name: 'title',
-      type: 'string'
+      type: 'string',
+      validation: Rule => Rule.required()
     },
     {
       title: 'Slug',
@@ -27,21 +28,23 @@ export default {
         }),
     },
     {
-      title: 'Publish Date',
-      name: 'publishDate',
+      title: 'Start Date',
+      name: 'startDate',
       type: 'date',
       options: {
         dateFormat: 'DD MMM, YYYY',
       },
-      description: 'Date will auto populate on creation. Update as necessary.',
-      initialValue: () => {
-        let today = new Date()
-        today = today.toISOString()
-        today = today.split('T')
-
-        return today[0]
-      },
       validation: Rule => Rule.required()
+    },
+    {
+      title: 'Start Time',
+      name: 'startTime',
+      type: 'string',
+    },
+    {
+      title: 'Location',
+      name: 'location',
+      type: 'string',
     },
     {
       title: 'Feature Image',
@@ -59,17 +62,6 @@ export default {
       title: 'Body',
       name: 'body',
       type: 'portableText'
-    },
-    {
-      title: 'Related Stories',
-      name: 'related',
-      type: 'array',
-      of: [{
-        type: 'reference',
-        to: { type: 'clientStory' }
-      }],
-      description: 'Optional. Choose 3 related stories. If no selection made latest 3 stories will display.',
-      validation: Rule => Rule.max(3)
     },
     {
       title: 'SEO',

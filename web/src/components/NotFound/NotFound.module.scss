@@ -1,0 +1,9 @@
+.notFound {
+  @include section;
+  background-color: var(--tone-primary);
+  text-align: center;
+
+  h1 {
+    margin-top: 0;
+  }
+}

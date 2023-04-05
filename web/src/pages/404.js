@@ -5,13 +5,13 @@ import { getClient } from '../lib/sanity'
 
 import Seo from '../components/Seo'
 import Layout from '../components/Layout'
-import Hero from '../components/Hero'
+import NotFound from '../components/NotFound'
 import PageBuilder from '../components/PageBuilder'
 
 const pageQuery = groq`{
   'globalSettings': *[_type == 'globalSettings'][0],
   'globalNavigation': *[_type == 'globalNavigation'][0],
-  'page': *[_type == 'homepage'][0]
+  'page': *[_type == 'notFound'][0]
 }`
 
 export async function getStaticProps() {
@@ -22,8 +22,8 @@ export async function getStaticProps() {
   }
 }
 
-const Home = ({ globalSettings, globalNavigation, page }) => {
-  const { pageTitle, pageBuilder, seo } = page
+const Error = ({ globalSettings, globalNavigation, page }) => {
+  const { pageTitle, text, pageBuilder, seo } = page
 
   return (
     <>
@@ -33,15 +33,15 @@ const Home = ({ globalSettings, globalNavigation, page }) => {
         pageTitle={pageTitle}
       />
       <Layout navigation={globalNavigation} charityNumber={globalSettings.charityNumber}>
-        <Hero {...page.hero} />
+        <NotFound title={pageTitle} text={text} />
         <PageBuilder blocks={pageBuilder} />
       </Layout>
     </>
   )
 }
 
-export default Home
+export default Error
 
-Home.propTypes = {
+Error.propTypes = {
   page: PropTypes.object
 }

@@ -6,13 +6,14 @@ export default {
     {
       title: 'Page Title',
       name: 'pageTitle',
-      type: 'string'
+      type: 'string',
+      validation: Rule => Rule.required()
     },
     {
       title: 'Slug',
       name: 'slug',
       type: 'slug',
-      description: 'A slug forms the last section of the URL and is usually based on the title of the document though you may wish to shorten particularly long titles.',
+      description: 'A slug forms the last section of the URL and is usually based on the title though you may wish to shorten long titles.',
       options: {
         source: 'pageTitle',
         maxLength: 96

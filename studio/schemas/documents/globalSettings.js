@@ -51,5 +51,10 @@ export default {
         'A generic open graph image to be used as a fallback for pages without a unique open graph image.',
       validation: Rule => Rule.required(),
     },
+    {
+      title: 'Charity Number',
+      name: 'charityNumber',
+      type: 'string'
+    }
   ],
 }

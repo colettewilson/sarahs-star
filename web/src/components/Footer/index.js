@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 import styles from './Footer.module.scss'
 
-const Footer = ({ navigation }) => {
+const Footer = ({ navigation, charityNumber }) => {
   const date = new Date()
 
   return (
@@ -35,7 +35,7 @@ const Footer = ({ navigation }) => {
         </nav>
         <div className={styles.footerCopyright}>
           <p>&copy; Sarah's Star { date.getFullYear() }</p>
-          <p>Registered Charity, England and Wales (1167247)</p>
+          {charityNumber && <p>Registered Charity, England and Wales ({ charityNumber })</p>}
         </div>
       </div>
     </footer>
