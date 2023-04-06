@@ -9,11 +9,11 @@ const styles = {
 
 const Logo = () => (
   <div style={{ display: 'flex', alignItems: 'center' }}>
-      <img
-        src={src}
-        style={styles}
-        alt="logo"
-      />
+    <img
+      src={src}
+      style={styles}
+      alt="logo"
+    />
   </div>
 )
 

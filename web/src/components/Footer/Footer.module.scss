@@ -43,7 +43,7 @@
 }
 
 .footerTopLink {
-  @include font-opensans(500, italic);
+  @include font-nunito(400, italic);
   text-transform: uppercase;
 }
 
@@ -58,7 +58,7 @@
 }
 
 .footerLink::before {
-  content: '';
+  content: "";
   display: inline-block;
   width: 8px;
   height: 8px;

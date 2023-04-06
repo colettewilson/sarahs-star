@@ -24,6 +24,11 @@
       type: 'pageBuilderClientStories'
     },
     {
+      title: 'Events',
+      name: 'pageBuilderEvents',
+      type: 'pageBuilderEvents'
+    },
+    {
       title: 'Form Section',
       name: 'pageBuilderForm',
       type: 'pageBuilderForm'

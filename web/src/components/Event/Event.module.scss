@@ -3,7 +3,6 @@
   @include gridPadding;
   @include section;
   display: flex;
-  justify-content: space-between;
 
   @include breakpoint(medium down) {
     flex-wrap: wrap;
@@ -17,7 +16,6 @@
   }
 
   @include breakpoint(xlarge up) {
-    width: calc(((100% - (11 * 32px)) / 12) * 8 + (7 * 32px));
     margin-left: calc(((100% - (11 * 32px)) / 12) * 1 + 32px);
   }
 }
@@ -25,6 +23,7 @@
 .eventAside {
   @include breakpoint(large up) {
     width: calc(((100% - (11 * 32px)) / 12) * 4 + (3 * 32px));
+    margin-left: 32px;
   }
 
   @include breakpoint(xlarge up) {

@@ -16,7 +16,7 @@ const Stories = ({ title, stories, background = 'white' }) => (
         const bgUrl = story.featureImage ? urlFor(story.featureImage).url() : ''
 
         return (
-          <div className="gridItem medium-4">
+          <div key={story._id} className="gridItem medium-4">
             <Link className={styles.story} href={`/client-stories/${story.slug.current}`} data-style={`brand-${i + 1}`}>
               <span></span>
               <span></span>

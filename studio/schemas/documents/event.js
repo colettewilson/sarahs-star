@@ -1,10 +1,10 @@
-import { IoCalendarOutline } from 'react-icons/io'
+import { FiCalendar } from 'react-icons/fi'
 
 export default {
   title: 'Event',
   name: 'event',
   type: 'document',
-  icon: IoCalendarOutline,
+  icon: FiCalendar,
   fields: [
     {
       title: 'Title',
@@ -30,7 +30,8 @@ export default {
     {
       title: 'Start Date',
       name: 'startDate',
-      type: 'date',
+      type: 'datetime',
+      description: 'Date only field. Time will be ignored in the frontend.',
       options: {
         dateFormat: 'DD MMM, YYYY',
       },

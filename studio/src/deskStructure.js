@@ -1,6 +1,6 @@
 import S from '@sanity/desk-tool/structure-builder'
 import { FiFile, FiList, FiSettings, FiUsers } from 'react-icons/fi'
-import { BiError } from 'react-icons/bi'
+import { BiError, BiHomeAlt2 } from 'react-icons/bi'
 
 // We filter document types defined in structure to prevent
 // them from being listed twice
@@ -53,7 +53,7 @@ export default () =>
       S.divider(),
       S.listItem()
         .title('Homepage')
-        .icon(FiSettings)
+        .icon(BiHomeAlt2)
         .child(
           S.document()
             .id('homepage')

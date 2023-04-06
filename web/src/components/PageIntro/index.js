@@ -9,7 +9,6 @@ const PageIntro = ({ title, intro, startDate, story = false }) => {
         <div className="gridItem">
           <h1>{title}</h1>
           {intro && <p>{intro}</p>}
-          {startDate && <p>Start Date: <b>{startDate}</b></p>}
         </div>
       </div>
     </section>

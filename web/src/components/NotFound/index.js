@@ -1,4 +1,3 @@
-import React from 'react'
 import PortableText from '../PortableText'
 
 import styles from './NotFound.module.scss'

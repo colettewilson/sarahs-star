@@ -1,59 +1,33 @@
 import PropTypes from 'prop-types'
-import Link from 'next/link'
-import { urlFor } from '../../lib/sanity'
-
-import Arrow from '../../svg/arrow.svg'
+import ArticleCard from '../ArticleCard'
 
 import styles from './PageBuilderClientStories.module.scss'
 import Image from '../Image'
 
 const PageBuilderEvents = ({ block }) => {
-  const { title, addFeatured, featured, addStories, stories } = block
-
-  console.log(featured)
+  const { title, addFeatured, featured, addEvents, initialEvents } = block
 
   return (
     <section className={styles.pageBuilderClientStories}>
-        {title && 
-          <div className="grid">
-            <div className="gridItem">
-              <h2>{title}</h2>
-            </div>
+      {title &&
+        <div className="grid">
+          <div className="gridItem">
+            <h2>{title}</h2>
           </div>
-        }
+        </div>
+      }
+      <div className="grid">
         {addFeatured && featured && 
-          <div className={styles.feature}>
-            <Link className={styles.featureInner} href={`/client-stories/${featured.slug.current}`}>
-              <div className={styles.featureContent}>
-                <h3>{featured.title}</h3>
-                <p>{featured.excerpt}</p>
-                <span className={styles.linkLabel}>Read more<Arrow /></span>
-              </div>
-              <div className={styles.featureImage}>
-                <Image imgRef={featured.featureImage} />
-              </div>
-            </Link>
+          <div className="gridItem">
+            <ArticleCard {...featured} prefix="events" featured />
           </div>
         }
-        {addStories && stories && 
-          <div className="grid">
-            {stories.map(story => {
-              const bgUrl = story.featureImage ? urlFor(story.featureImage).url() : ''
-              return (
-                <div className="gridItem medium-4">
-                  <Link className={styles.story} href={`/client-stories/${story.slug.current}`}>
-                    <div className={styles.storyThumbnail} style={{ backgroundImage: `url(${bgUrl})` }}></div>
-                    <div className={styles.storyContent}>
-                      <h3>{story.title}</h3>
-                      <p className={styles.storyExcerpt}>{story.excerpt}</p>
-                      <span className={styles.linkLabel}>Read more<Arrow /></span>
-                    </div>
-                  </Link>
-                </div>
-              )
-            })}
+        {addEvents && initialEvents && initialEvents.map(event => 
+          <div key={event._id} className="gridItem medium-6 large-4">
+            <ArticleCard {...event} prefix="events" />
           </div>
-        }
+        )}
+      </div>
     </section>
   )
 }

@@ -5,6 +5,7 @@ import Columns from "../PageBuilderColumns"
 import Text from "../PageBuilderText"
 import ImageText from "../PageBuilderImageText"
 import ClientStories from '../PageBuilderClientStories'
+import Events from "../PageBuilderEvents"
 import Form from '../PageBuilderForm'
 
 const PageBuilder = ({ blocks }) => {
@@ -13,6 +14,7 @@ const PageBuilder = ({ blocks }) => {
     "pageBuilderText": Text,
     "pageBuilderImageText": ImageText,
     "pageBuilderClientStories": ClientStories,
+    "pageBuilderEvents": Events,
     "pageBuilderForm": Form
   }
 

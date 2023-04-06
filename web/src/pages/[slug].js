@@ -8,6 +8,8 @@ import Layout from '../components/Layout'
 import PageIntro from '../components/PageIntro'
 import PageBuilder from '../components/PageBuilder'
 
+import getPageBuilder from '../resolvers/getPageBuilder'
+
 const slugQuery = groq`*[_type == "page" && defined(slug.current)][].slug.current`
 
 const pageQuery = groq`{
@@ -15,17 +17,7 @@ const pageQuery = groq`{
   'globalNavigation': *[_type == 'globalNavigation'][0],
   'page': *[_type == 'page' && slug.current == $slug][0]{
     ...,
-    pageBuilder[]{
-      ...,
-      _type == 'pageBuilderClientStories' => {
-        ...,
-        featured->{...},
-        'stories': select(
-          addStories && clientStories == 'All' => *[_type == 'clientStory' && _id != ^.featured._ref]|order(publishDate desc),
-          addStories && clientStories == 'Selected' => selectedStories
-        )
-      },
-    }
+    ${getPageBuilder}
   }
 }`
 

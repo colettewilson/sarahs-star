@@ -6,7 +6,8 @@
   @include theme-intro;
 }
 
-.form {}
+.form {
+}
 
 .formField {
   width: 100%;
@@ -14,13 +15,13 @@
 }
 
 .formLabel {
-  @include font-opensans(500);
+  @include font-nunito(500);
   display: inline-block;
-  margin-bottom : 8px;
+  margin-bottom: 8px;
 }
 
 .formError {
-  @include font-opensans(500);
+  @include font-nunito(500);
   padding: 0 8px;
   color: var(--brand-2-color);
   font-size: 0.875rem;
@@ -97,7 +98,7 @@
   margin-left: auto;
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 50%;
     left: 50%;

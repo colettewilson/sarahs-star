@@ -18,6 +18,7 @@ import pageBuilderColumns from './objects/pageBuilderColumns'
 import pageBuilderText from './objects/pageBuilderText'
 import pageBuilderImageText from './objects/pageBuilderImageText'
 import pageBuilderClientStories from './objects/pageBuilderClientStories'
+import pageBuilderEvents from './objects/pageBuilderEvents'
 import pageBuilderForm from './objects/pageBuilderForm'
 import portableText from './objects/portableText'
 import basicText from './objects/basicText'
@@ -53,6 +54,7 @@ export default createSchema({
     pageBuilderText,
     pageBuilderImageText,
     pageBuilderClientStories,
+    pageBuilderEvents,
     pageBuilderForm,
     portableText,
     basicText,

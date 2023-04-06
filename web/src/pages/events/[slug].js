@@ -30,7 +30,8 @@ export async function getStaticProps({ params }) {
         page,
         related
       }
-    }
+    },
+    revalidate: 30,
   }
 }
 
