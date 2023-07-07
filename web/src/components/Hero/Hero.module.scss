@@ -15,7 +15,7 @@
 
 .heroContent {
   p + p {
-    margin-top: block(large)
+    margin-top: block(large);
   }
 
   a + a {
@@ -46,7 +46,7 @@
   align-items: end;
 
   @include breakpoint(small up) {
-    width: 80%
+    width: 80%;
   }
 
   @include breakpoint(medium up) {
@@ -76,6 +76,7 @@
     height: 100%;
     border-radius: 18px;
     box-shadow: 0 0 12px rgba(black, 0.3);
+    object-fit: cover;
   }
 }
 
